@@ -43,5 +43,8 @@
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
     "collectCoverage": true,
     "testEnvironment": "node"
-  }
+  },
+  "files": [
+    "src"
+  ]
 }

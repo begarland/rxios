@@ -7,8 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "semantic-release":
-      "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -39,12 +38,22 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testMatch": ["<rootDir>/__tests__/*.ts"],
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
+    "testMatch": [
+      "<rootDir>/__tests__/*.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
     "collectCoverage": true,
     "testEnvironment": "node"
   },
-  "files": [
-    "src/index.ts"
-  ]
+  "dependencies": {
+    "axios": "^0.18.0",
+    "rxjs": "^6.2.0",
+    "rxjs-compat": "^6.2.0"
+  }
 }

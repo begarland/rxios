@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise } from 'axios';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable'
 
 export interface rxiosConfig extends AxiosRequestConfig {
   localCache?: boolean;
@@ -12,11 +12,11 @@ class rxios {
     this._httpClient = axios.create(options);
   }
 
-  private _makeRequest<T>(method: string, url: string | null, queryParams?: object | null, body?: object | null, config?: object) {
+  private _makeRequest<T>(method: string, url: string, queryParams?: object, body?: object, config?: AxiosRequestConfig) {
     let request: AxiosPromise<T>;
     switch (method) {
       case 'REQUEST':
-        request = this._httpClient.request(config);
+        request = this._httpClient.request(config as AxiosRequestConfig);
         break;
       case 'GET':
         request = this._httpClient.get<T>(url, {params: queryParams});
@@ -49,7 +49,7 @@ class rxios {
   }
 
   public request<T>(config: object){
-    return this._makeRequest<T>('REQUEST', null, null, null, config)
+    return this._makeRequest<T>('REQUEST', '', {}, {}, config)
   }
 
   public get<T>(url: string, queryParams?: object) {

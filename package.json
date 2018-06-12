@@ -45,6 +45,6 @@
     "testEnvironment": "node"
   },
   "files": [
-    "src"
+    "src/index.ts"
   ]
 }

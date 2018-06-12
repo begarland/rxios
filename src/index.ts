@@ -12,9 +12,12 @@ class rxios {
     this._httpClient = axios.create(options);
   }
 
-  private _makeRequest<T>(method: string, url: string, queryParams?: object, body?: object) {
+  private _makeRequest<T>(method: string, url: string | null, queryParams?: object | null, body?: object | null, config?: object) {
     let request: AxiosPromise<T>;
     switch (method) {
+      case 'REQUEST':
+        request = this._httpClient.request(config);
+        break;
       case 'GET':
         request = this._httpClient.get<T>(url, {params: queryParams});
         break;
@@ -43,6 +46,10 @@ class rxios {
         subscriber.complete();
       });
     });
+  }
+
+  public request<T>(config: object){
+    return this._makeRequest<T>('REQUEST', null, null, null, config)
   }
 
   public get<T>(url: string, queryParams?: object) {
